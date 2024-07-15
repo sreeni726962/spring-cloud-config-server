@@ -1,4 +1,15 @@
 spring:
+ cloud:
+   gateway:
+     routes:
+      - id: order-service
+        uri: lb://ORDER-SERVICE
+        predicates: 
+         - Path=/order/**
+      - id: payment-service
+        uri: lb://PAYMENT-SERVICE
+        predicates:
+         - Path=/payment/** 
  datasource:
   driver-class-name: org.postgresql.Driver
   url: jdbc:postgresql://localhost:5432/postgres
